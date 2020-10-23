@@ -1,7 +1,8 @@
-# Sound speaker Frequency Response
+# Speaker Frequency Response
 
 
-Matlab scripts for processing combined frequency response, using far and near impulse reponse measurement of a sound speaker .
+Matlab scripts for processing speaker frequency response by taking a merge of *far* and *near* impulse reponse measurement.
+
 
 
 <p align="center">
