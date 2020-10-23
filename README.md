@@ -9,7 +9,7 @@ Matlab scripts for processing **speaker frequency response** by taking a merge o
   <img src="https://github.com/gomeslucasm/Speaker-Frequency-Response/blob/master/image1.png">
 </p>
 
-The scripts were used for a work in a Speakers course teached by Professor Willian D'Andrea at University Federal of Santa Maria,  .
+The scripts were used for a work in a Loudspeakers course teached by Professor Willian D'Andrea at University Federal of Santa Maria,  .
 
 Authors: Eduardo Laux, Gabrielle Hoffmann, Lucas Gomes, Marcelo Brites, Sidney Candido.
 
