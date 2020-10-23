@@ -10,4 +10,12 @@ Matlab scripts for processing combined frequency response, using far and near im
 
 
 
+## How to use
 
+```
+
+% Calculating impulse response 
+Response = FrequencyResponse('Time',Measure,'Signal',Excitation_signal,'Type',Near or Far,'T_win',Time length to cut the signal after the maximum peak);
+
+
+```
