@@ -21,7 +21,7 @@ Response = FrequencyResponse('Time',Measure,'Signal',Excitation_signal,'Type',Ne
                       'T_win',Time length to cut the signal after the maximum peak);
 ```
 
-A time data vector or an itaAudio is accepted as the 'time' input parameter.
+A time data vector or an itaAudio is accepted as the 'time' and 'signal' input parameter.
 
 - Combined response:
 
