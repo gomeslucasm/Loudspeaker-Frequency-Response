@@ -28,7 +28,7 @@ A time data vector or an itaAudio is accepted as the 'time' and 'signal' input p
 - Combined response:
 
 ```
-Merged_response = ProcessMergedResponse(Near_Response,Far_Reponse,'a',Radius of speaker); (Optional: 'c0',sound velocity(default = 343))
+Merged_response = ProcessMergedResponse(Near_Response,Far_Reponse,'a',Speaker Radius); (Optional: 'c0',sound velocity(default = 343))
 ```
 
 
