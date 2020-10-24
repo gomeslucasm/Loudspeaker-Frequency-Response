@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%         Processing script example of a  merged         % 
+%        frequency response of a loudspeaker             %
+%                                                        %
+%   Authors: Eduardo Laux, Gabrielle Hoffmann,           %
+%        Lucas Gomes, Marcelo Brites, Sidney Candido     %
+%                                                        %
+%         University Federal of Santa Maria              %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+clear all; close all;
+%%
+%%%%%%% Signal %%%%%%%%%%%%%%
+
+sweep = ita_generate_sweep('fftDegree',18.5,'mode','exp');
+%%
+    
+%%%%%%% Near measurement %%%%
+
+load('Near.mat')
+Near_measure = result;
+
+Near_response = FrequencyResponse('Time',Near_measure,'Signal',sweep,'Type','Near','T_win',1);
+Near_response.plot_freq
+title('Near frequency response')
+%%%%%%% Far measurement %%%%%
+load('Far.mat')
+Far_measure = result;
+
+Far_response = FrequencyResponse('Time',Far_measure,'Signal',sweep,'Type','Far','T_win',0.002);
+Far_response.plot_freq
+title('Far frequency response')
+%%
+f_near = abs(Near_response.freq_data);
+f_far = abs(Far_response.freq_data);
+max_val = max([max(f_near) max(f_far)]);
+f_near = f_near./max_val;
+f_far = f_far./max_val;
+figure()
+f_v = Near_response.freq_vector;
+semilogx(f_v,f_near,'--','LineWidth',1.5,'Color','k')
+hold on
+f_v = Far_response.freq_vector;
+semilogx(f_v,20f_far,'-','LineWidth',1.5,'Color','r')
+
+%%
+Out_combined = ProcessMergedResponse(Near_response,Far_response,'a',0.0508);
+Out_combined.plot
+title('Merged frequency response')
+%%
