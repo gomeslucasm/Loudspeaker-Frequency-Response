@@ -15,11 +15,11 @@ clear all; close all;
 load('Measurement.mat')
 %% Processing frequency response
 %%%%%%% Near measurement %%%%
-Near_response = FrequencyResponse('Time',Near_measurent,'Signal',signal,'Type','Near','T_win',1,'Fs',Fs);
+Near_response = FrequencyResponse('Time',Near_measurement,'Signal',signal,'Type','Near','T_win',1,'Fs',Fs);
 Near_response.plot_freq
 title('Near frequency response')
 %%%%%%% Far measurement %%%%%
-Far_response = FrequencyResponse('Time',Far_measurent,'Signal',signal,'Type','Far','T_win',0.002,'Fs',Fs);
+Far_response = FrequencyResponse('Time',Far_measurement,'Signal',signal,'Type','Far','T_win',0.002,'Fs',Fs);
 Far_response.plot_freq
 title('Far frequency response')
 %%
