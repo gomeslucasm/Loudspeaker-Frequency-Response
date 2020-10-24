@@ -15,7 +15,7 @@ function out = ProcessMergedResponse(Audio1,Audio2,varargin)
 
 
 %%%%%%%% Inputs %%%%%%%%%%
-sArgs = containers.Map({'a','c0'},{0.1,343});
+sArgs = containers.Map({'a','c0','PlotMerged'},{0.1,343,0});
 
 for i=1:2:length(varargin)
    sArgs(varargin{i}) = varargin{i+1}; 
@@ -48,13 +48,25 @@ adjust_val = amp1/amp2;
 %%% Merging near and far response %%%
 f_near = abs(Near.freq_data);
 f_far = abs(Far.freq_data).*adjust_val;
-%%
-f_v = Far.freq_vector;
-figure()
-semilogx(f_v,20*log10(f_near))
-hold on
-semilogx(f_v,20*log10(f_far))
-xlim([20 22050])
+f_v = Near.freq_vector;
+%% Plotting the two curves
+if sArgs('PlotMerged')==1
+    f_v = Near.freq_vector;
+    figure()
+    semilogx(f_v,20*log10(abs(f_near )),'--','LineWidth',1.5,'Color','k')
+    hold on 
+    c = semilogx(f_v,20*log10(abs(f_far)),'-','LineWidth',1.5,'Color','r')
+    datatip(c,'DataIndex',idx)
+    c.DataTipTemplate.DataTipRows(1).Label = 'Merge frequency [Hz]:';
+    c.DataTipTemplate.DataTipRows(2).Label = 'Amplitude [dB]:';
+    xlim([50 22050])
+    ylim auto
+    set(gcf, 'Position',  [161,246,848,338])
+    grid on
+    xlabel('Frequency [Hz]')
+    ylabel('Amplitude [dB] ref.: 1')
+    arruma_fig('spec2','%1.1f','ponto')
+end
 %%
 f_out = zeros(length(f_near),1);
 f_out(1:idx) = f_near(1:idx);
