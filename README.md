@@ -1,4 +1,4 @@
-# Speaker Frequency Response 🔊
+# Loudspeaker Frequency Response 🔊
 
 
 Matlab scripts for processing **speaker frequency response** by taking a merge of **far** and **near** impulse reponse measurement.
